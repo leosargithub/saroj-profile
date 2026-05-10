@@ -1,4 +1,31 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, Phone } from "lucide-react";
+
+const contacts = [
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+977 9863426464",
+    href: "tel:+9779863426464",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "budhathokisaroj827@gmail.com",
+    href: "mailto:budhathokisaroj827@gmail.com",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "saroj-budhathoki",
+    href: "https://www.linkedin.com/in/saroj-budhathoki-b6935826b/",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "leosargithub",
+    href: "https://github.com/leosargithub",
+  },
+];
 
 export function Contact() {
   return (
@@ -9,25 +36,29 @@ export function Contact() {
           <h2 className="mt-2 text-4xl font-bold md:text-5xl">
             Let's <span className="gradient-text">connect</span>
           </h2>
-          <p className="mt-3 text-muted-foreground">Contact details will be added soon.</p>
+          <p className="mt-3 text-muted-foreground">
+            Have a project in mind or want to talk QA? Reach out anytime.
+          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-5">
           <div className="space-y-4 md:col-span-2">
-            {[
-              { icon: Mail, label: "Email", value: "To be added" },
-              { icon: Github, label: "GitHub", value: "To be added" },
-              { icon: Linkedin, label: "LinkedIn", value: "To be added" },
-            ].map((c) => (
-              <div key={c.label} className="glass flex items-center gap-4 rounded-2xl p-4 glow-hover">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
+            {contacts.map((c) => (
+              <a
+                key={c.label}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="glass flex items-center gap-4 rounded-2xl p-4 glow-hover"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
                   <c.icon className="h-5 w-5 text-primary-foreground" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs uppercase tracking-wider text-muted-foreground">{c.label}</p>
-                  <p className="text-sm font-medium">{c.value}</p>
+                  <p className="truncate text-sm font-medium">{c.value}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
